@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api/axios'
 import { motion } from 'framer-motion'
 
 export default function CategoriesPage() {
@@ -16,8 +16,8 @@ export default function CategoriesPage() {
 
     try {
 
-      const res = await axios.get(
-        '/api/categories'
+      const res = await api.get(
+        '/categories'
       )
 
       setCategories(

@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-import axios from 'axios'
+import api from '../api/axios'
 
 import { motion } from 'framer-motion'
 
@@ -38,8 +38,8 @@ export default function SearchResultsPage() {
 
       setLoading(true)
 
-      const res = await axios.get(
-        `/api/products?search=${query}`
+      const res = await api.get(
+        `/products?search=${query}`
       )
 
       setResults(

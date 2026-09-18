@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../api/axios'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -77,7 +77,7 @@ export default function HomePage() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('/api/products')
+      const res = await api.get('/products')
       setProducts(res.data.products || [])
     } catch (error) {
       console.log(error)
@@ -86,7 +86,7 @@ export default function HomePage() {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('/api/categories')
+      const res = await api.get('/categories')
       if (res.data.categories?.length > 0) {
         setCategories(res.data.categories)
       } else {

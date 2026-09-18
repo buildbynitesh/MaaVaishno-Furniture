@@ -41,8 +41,10 @@ export const slugify = (str) => {
 // Get image URL (fallback to placeholder)
 export const getImageUrl = (image) => {
   if (!image) return 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80'
-  if (image.startsWith('http')) return image
-  const baseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/api\/?$/, '')
+  const defaultApi =
+    import.meta.env.VITE_API_URL ||
+    (import.meta.env.PROD ? 'https://maavaishnofurniture.onrender.com/api' : '')
+  const baseUrl = defaultApi.replace(/\/api\/?$/, '')
   const cleanImage = image.replace(/^\/+/, '')
   return baseUrl ? `${baseUrl}/uploads/${cleanImage}` : `/uploads/${cleanImage}`
 }

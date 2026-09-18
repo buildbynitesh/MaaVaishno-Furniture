@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api/axios'
 import { motion } from 'framer-motion'
 import {
   FiFilter,
@@ -39,7 +39,7 @@ export default function ShopPage() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('/api/products?limit=100')
+      const res = await api.get('/products?limit=100')
       setProducts(res.data.products || [])
     } catch (error) {
       console.log(error)
@@ -48,7 +48,7 @@ export default function ShopPage() {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('/api/categories')
+      const res = await api.get('/categories')
       if (res.data.categories?.length > 0) {
         setCategories(res.data.categories)
       } else {

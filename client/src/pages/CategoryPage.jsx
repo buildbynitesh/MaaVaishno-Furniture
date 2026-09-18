@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api/axios'
 import { motion } from 'framer-motion'
 import { FiArrowLeft } from 'react-icons/fi'
 
@@ -30,8 +30,8 @@ export default function CategoryPage() {
 
       // CATEGORY
       const categoryRes =
-        await axios.get(
-          '/api/categories'
+        await api.get(
+          '/categories'
         )
 
       const foundCategory =
@@ -49,8 +49,8 @@ export default function CategoryPage() {
 
       // PRODUCTS
       const productRes =
-        await axios.get(
-          '/api/products'
+        await api.get(
+          '/products'
         )
 
       const filteredProducts =
