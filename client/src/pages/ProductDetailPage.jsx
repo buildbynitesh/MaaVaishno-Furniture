@@ -189,6 +189,9 @@ export default function ProductDetailPage() {
               <img
                 src={getImageUrl(images[activeImg])}
                 alt={product.title}
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80'
+                }}
                 className="w-full h-full object-cover transition-all duration-300"
               />
               {product.discount > 0 && (
@@ -206,7 +209,14 @@ export default function ProductDetailPage() {
                       activeImg === i ? 'border-wood ring-2 ring-wood/20 scale-105' : 'border-sand/40 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={getImageUrl(img)} alt="" className="w-full h-full object-cover" />
+                    <img
+                      src={getImageUrl(img)}
+                      alt=""
+                      onError={(e) => {
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80'
+                      }}
+                      className="w-full h-full object-cover"
+                    />
                   </button>
                 ))}
               </div>

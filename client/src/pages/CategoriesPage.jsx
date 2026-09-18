@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../api/axios'
 import { motion } from 'framer-motion'
+import { getImageUrl } from '../utils/helpers'
 
 export default function CategoriesPage() {
 
@@ -91,8 +92,11 @@ export default function CategoriesPage() {
               >
 
                 <img
-                  src={cat.image}
+                  src={getImageUrl(cat.image)}
                   alt={cat.name}
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80'
+                  }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 

@@ -82,6 +82,10 @@ export default function ProductCard({ product, index = 0 }) {
             className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-108 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ transform: isHovered ? 'scale(1.08)' : 'scale(1)' }}
             onLoad={() => setImageLoaded(true)}
+            onError={(e) => {
+              setImageLoaded(true)
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80'
+            }}
           />
 
           {/* Badges */}
