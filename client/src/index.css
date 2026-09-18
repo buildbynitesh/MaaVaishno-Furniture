@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --cream: #F5F0E8;
+  --beige: #E8DDD0;
+  --sand: #D4C5B0;
+  --wood: #8B6914;
+  --wood-light: #C4A35A;
+  --wood-dark: #5C3D11;
+  --bark: #3D2B1F;
+  --linen: #FAF7F2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--linen);
+  color: var(--bark);
+  overflow-x: hidden;
+}
+
+/* Dark mode */
+.dark body {
+  background-color: #1a1208;
+  color: #F5F0E8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wood-light);
+}
+
+/* Utilities */
+@layer components {
+  .btn-primary {
+    @apply bg-bark text-cream px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all duration-300 hover:bg-wood-dark hover:shadow-hover hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-outline {
+    @apply border border-bark text-bark px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all duration-300 hover:bg-bark hover:text-cream hover:shadow-hover hover:-translate-y-0.5;
+  }
+  .btn-wood {
+    @apply bg-wood text-cream px-8 py-3 rounded-full font-body font-medium tracking-wide transition-all duration-300 hover:bg-wood-dark hover:shadow-hover hover:-translate-y-0.5;
+  }
+  .card-luxury {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-hover transition-all duration-300;
+  }
+  .section-title {
+    @apply font-display text-4xl md:text-5xl text-bark font-semibold;
+  }
+  .section-subtitle {
+    @apply font-accent text-lg text-wood italic;
+  }
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/50;
+  }
+  .input-luxury {
+    @apply w-full px-4 py-3 bg-cream border border-sand rounded-xl font-body text-bark placeholder-sand/70 focus:outline-none focus:border-wood focus:ring-2 focus:ring-wood/20 transition-all duration-200;
+  }
+  .input-luxury:-webkit-autofill,
+  .input-luxury:-webkit-autofill:hover,
+  .input-luxury:-webkit-autofill:focus,
+  .input-luxury:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #F5F0E8 inset !important;
+    -webkit-text-fill-color: #3D2B1F !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  .badge-discount {
+    @apply absolute top-3 left-3 bg-wood text-cream text-xs font-body font-semibold px-3 py-1 rounded-full;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--cream) 25%, var(--beige) 50%, var(--cream) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Swiper customization */
+.swiper-pagination-bullet {
+  background: var(--sand) !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--wood) !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
